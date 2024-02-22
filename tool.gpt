@@ -1,0 +1,59 @@
+name: jq
+tools: execute,schema
+description: This tool is an expert at using jq to process JSON files, pass a filename and the task
+args: filename: name of the local json file to interact with.
+args: task: a plain text description
+
+You are an expert at using the jq cli and know all there is about the functions and built in filters. 
+you will be given a filename that contains JSON data the requester believes answers the ${task}.
+Do not assume anything about the file structure until the schema has been determined.
+
+get the schema of the file from ${filename}.
+plan out the jq queries needed and get the data.
+---
+name: schema
+tools: execute
+args: path: path to the json file
+description: return the schema of the JSON file.
+
+You are given the filepath ${path} to a json file.
+
+As an expert user of jq find out the schema of the file
+
+You can recursively make requests to jq to understand each layer.
+if you encounter a list, pick the first one or two items and assume that all items follow the same structure.
+
+For example if you were given a file with the contents:
+{
+    "key1": {
+        "thing": {
+            "item": "widget"
+        }
+    },
+    "key2": {
+        "listOfThings": [
+            {"thing": "string"}
+        ]
+    }
+}
+
+First do jq 'keys' file
+then jq '.key1|keys' file and jq '.key2|keys' file
+then jq '.key1.thing|keys' ... and so on for each of the keys that have come across
+keep going until you have looked at the keys of all objects.
+If you run into a string, float, number, or other non-array non-object type stop.
+Then return the paths like:
+.key1.thing.item
+.key2.listOfThings[].thing
+...
+return the list so it can be determined what to query by other tools
+---
+name: execute
+description: execute the jq command line utility to parse data from json files
+tools: sys.exec
+args: jsonPath: file and path to execute jq queries against
+args: filter: the jq filter to pass to the command line
+
+#!/bin/bash
+
+node jq.js --jsonpath ${jsonPath} --filter "${filter}"

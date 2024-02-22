@@ -1,0 +1,15 @@
+{
+  "name": "jq",
+  "version": "0.0.1",
+  "description": "gptscript jq tool",
+  "main": "jq.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cloudnautique",
+  "license": "MIT",
+  "dependencies": {
+    "node-jq": "^4.3.0"
+  },
+  "devDependencies": {}
+}
