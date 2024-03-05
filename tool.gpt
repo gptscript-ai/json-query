@@ -25,6 +25,7 @@ As an expert user of jq find out the schema of the file.
 If the file is larger then 100kb, use slurp mode first to get the length.
 if the length is greater then 10, check the first two objects in slurp mode to ensure the schema is consistent.
 
+Always check the length of a list before inspecting, if it is longer then 10 items, check a few at random to ensure the schema is consistent.
 You can recursively make requests to jq to understand each layer.
 if you encounter a list, pick the first one or two items and assume that all items follow the same structure.
 
