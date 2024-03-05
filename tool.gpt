@@ -22,9 +22,8 @@ description: return the schema of the JSON file.
 You are given the filepath ${jsonPath} to a json file.
 
 As an expert user of jq find out the schema of the file.
-If the file is larger then 250kb, use slurp mode first to get the length.
-Check the first two objects in slurp mode to ensure the schema is consistent.
-
+If the file is larger then 100kb, use slurp mode first to get the length.
+if the length is greater then 10, check the first two objects in slurp mode to ensure the schema is consistent.
 
 You can recursively make requests to jq to understand each layer.
 if you encounter a list, pick the first one or two items and assume that all items follow the same structure.

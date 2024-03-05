@@ -5,7 +5,7 @@ This tool is a simple command line tool to query json documents using jq. It is 
 ## Installation
 
 ```bash
-git clone github.com/gptscript/json-query
+git clone https://github.com/gptscript/json-query
 cd json-query
 npm install
 ```
