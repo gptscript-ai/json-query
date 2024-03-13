@@ -1,4 +1,4 @@
-name: jq
+name: query
 tools: execute,schema
 description: This tool is an expert at using jq to process JSON files, pass a filename and the task
 args: filename: name of the local json file to interact with.
