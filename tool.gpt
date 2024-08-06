@@ -62,4 +62,4 @@ args: jsonPath: file and path to execute jq queries against
 args: filter: the jq filter to pass to the command line
 args: optionSlurp: pass false unless you need this, otherwise pass exactly 'true'
 
-#!/usr/bin/env node ${GPTSCRIPT_TOOL_DIR}/jq.js --jsonpath ${jsonPath} --filter "${filter}" --optionSlurp ${optionSlurp}
+#!/usr/bin/env node ${GPTSCRIPT_TOOL_DIR}/jq.js --jsonpath ${JSONPATH} --filter "${FILTER}" --optionSlurp ${OPTIONSLURP}
